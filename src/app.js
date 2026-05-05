@@ -1,5 +1,8 @@
 const express = require("express")
 
+const userController = require("./controllers/userController")
+
+
 const app = express()
 
 function callbackDaRaiz( request, response ) {
@@ -8,6 +11,7 @@ function callbackDaRaiz( request, response ) {
 
 app.get("/", callbackDaRaiz)
 
-app.listen(3000, () => {
-    console.log("API rodando! em http://localhost:3000")
-})
+app.get("/users", userController.getAllUsers)
+
+
+module.exports = app
