@@ -5,6 +5,13 @@ const usersList = require("../data/users")
         return usersList
     }
 
+    const create = (use) => {
+        usersList.push(user)
+
+        return user
+    }
+
     module.exports = {
-        findAll
+        findAll,
+        create
     }
