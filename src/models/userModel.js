@@ -5,13 +5,18 @@ const usersList = require("../data/users")
         return usersList
     }
 
-    const create = (use) => {
+    const create = (user) => {
         usersList.push(user)
 
         return user
     }
 
+    const findById = (id) => {
+        return usersList.find( user => user.id === id)
+    }
+    
     module.exports = {
         findAll,
-        create
+        create,
+        findById
     }
