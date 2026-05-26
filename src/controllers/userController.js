@@ -39,8 +39,47 @@ const getUserById = (req, res) => {
     return res.json(user)
 }
 
+const updateUser = (req, res) => {
+    const id = Number(req.params.id)
+
+    const { name } = req.body
+
+    const newData = {
+        name : name
+    }
+
+    const updatedUser = userModel.update(id, newData)
+
+    if ( !updatedUser ) {
+        return res.status(404).json({
+            message: "Usuário não encontrado"
+        })
+
+    }
+
+    return res.json(updatedUser)
+}
+
+const deleteUser = (req, res) => {
+        const id = Number(req.params.id)
+
+        const deletedUser = userModel.remove(id)
+
+        if(!deleteUser) {
+            return res.status(404).json({
+                massage: "Usuário não encontrado"
+            })
+        }
+
+        return res.json({
+            message: "Usuário removido"
+        })
+    }
+
 module.exports = {
     createUser,
     getAllUsers,
-    getUserById
+    getUserById,
+     updateUser,
+     deleteUser
 }
